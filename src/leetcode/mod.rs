@@ -1,3 +1,4 @@
+pub mod add_two_numbers;
 pub mod fizzbuzz;
 pub mod k_closest;
 pub mod longest_common_prefix;
