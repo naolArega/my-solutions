@@ -10,3 +10,4 @@ pub mod sort_colors;
 pub mod sorting_the_sentence;
 pub mod target_indices;
 pub mod two_sum;
+pub mod valid_parentheses;
