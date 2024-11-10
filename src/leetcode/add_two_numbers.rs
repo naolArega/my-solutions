@@ -1,15 +1,4 @@
-#[derive(PartialEq, Eq, Clone, Debug)]
-pub struct ListNode {
-    pub val: i32,
-    pub next: Option<Box<ListNode>>,
-}
-
-impl ListNode {
-    #[inline]
-    fn new(val: i32) -> Self {
-        ListNode { next: None, val }
-    }
-}
+use crate::leetcode::data_structures::ListNode;
 
 pub struct Solution;
 
@@ -76,31 +65,12 @@ impl Solution {
 mod tests {
     use super::*;
 
-    fn from_list_slice(list: &[i32]) -> Option<Box<ListNode>> {
-        let mut node = None;
+    use crate::leetcode::data_structures::ListNode;
 
-        for num in list.iter().rev() {
-            node = Some(Box::new(ListNode {
-                val: *num,
-                next: node,
-            }))
-        }
-
-        node
-    }
-
-    fn to_list_slice(list: Option<Box<ListNode>>) -> Vec<i32> {
-        let mut num = Vec::new();
-        let mut node = list;
-
-        while let Some(inner_node) = node {
-            num.push(inner_node.val);
-
-            node = inner_node.next;
-        }
-
-        num
-    }
+    #[allow(non_upper_case_globals)]
+    static from_list_slice: fn(&[i32]) -> Option<Box<ListNode>> = ListNode::from_list_slice;
+    #[allow(non_upper_case_globals)]
+    static to_list_slice: fn(Option<Box<ListNode>>) -> Vec<i32> = ListNode::to_list_slice;
 
     #[test]
     fn test_add_two_numbers_case_one() {
