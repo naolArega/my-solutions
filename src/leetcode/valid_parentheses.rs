@@ -55,20 +55,10 @@ impl Solution {
     }
 
     fn is_valid_pair(op: &char, cp: &char) -> bool {
-        let Some(opening_index) =
-            OPENING
-                .iter()
-                .enumerate()
-                .find_map(|(idx, p)| if p == op { Some(idx) } else { None })
-        else {
+        let Some(opening_index) = OPENING.iter().position(|p| p == op) else {
             return false;
         };
-        let Some(closing_index) =
-            CLOSING
-                .iter()
-                .enumerate()
-                .find_map(|(idx, p)| if p == cp { Some(idx) } else { None })
-        else {
+        let Some(closing_index) = CLOSING.iter().position(|p| p == cp) else {
             return false;
         };
 

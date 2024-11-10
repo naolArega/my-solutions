@@ -5,6 +5,7 @@ pub mod longest_common_prefix;
 pub mod merge_intervals;
 pub mod merge_two_sorted_lists;
 pub mod palindrome_number;
+pub mod remove_duplicates_from_sorted_array;
 pub mod roman_to_integer;
 pub mod smaller_numbers;
 pub mod sort_colors;
@@ -29,16 +30,12 @@ mod data_structures {
 
     impl ListNode {
         pub fn from_list_slice(list: &[i32]) -> Option<Box<ListNode>> {
-            let mut node = None;
-
-            for num in list.iter().rev() {
-                node = Some(Box::new(ListNode {
+            list.iter().rev().fold(None, |node, num| {
+                Some(Box::new(ListNode {
                     val: *num,
                     next: node,
-                }));
-            }
-
-            node
+                }))
+            })
         }
 
         pub fn to_list_slice(list: Option<Box<ListNode>>) -> Vec<i32> {
